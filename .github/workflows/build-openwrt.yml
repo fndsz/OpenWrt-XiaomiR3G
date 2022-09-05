@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build R619AC
+name: Build mir3g
 
 on:
   repository_dispatch:
