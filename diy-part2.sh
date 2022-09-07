@@ -1,19 +1,23 @@
 #!/bin/bash
-# Modify default system settings
+#
+# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
+#
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
+# https://github.com/P3TERX/Actions-OpenWrt
+# File name: diy-part2.sh
+# Description: OpenWrt DIY script part 2 (After Update feeds)
+#
+###### Modify default IP
+sed -i 's/192.168.1.1/10.28.1.1/g' package/base-files/files/bin/config_generate
 
-# 修改默认IP为192.168.123.1
-sed -i 's/192.168.1.1/192.168.123.1/g' package/base-files/files/bin/config_generate 
+###### Modify hostname
+sed -i 's/OpenWrt/NewifiD1/g' package/base-files/files/bin/config_generate
 
-# Hello World
-echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
+####### Modify the version number
+sed -i "s/OpenWrt /Fndsz build from Lede $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
 
-# luci-theme-infinityfreedom
-echo 'src-git infinityfreedom https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git' >>feeds.conf.default
+####### Set argon as default theme
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
-# passwall
-echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall.git;packages" >> feeds.conf.default
-echo "src-git PWluci https://github.com/xiaorouji/openwrt-passwall.git;luci" >> feeds.conf.default
-
-# 替换默认主题
-rm -rf package/lean/luci-theme-argon 
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git  package/lean/luci-theme-argon
