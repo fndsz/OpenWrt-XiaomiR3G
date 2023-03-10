@@ -20,7 +20,7 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH:
+  repo_branch:
          type: choice
   description: '版本分支'
   options:
