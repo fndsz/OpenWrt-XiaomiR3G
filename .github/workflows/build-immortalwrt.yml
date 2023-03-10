@@ -27,7 +27,7 @@ on:
           - "v21.02.2"
           - "v21.02.1"
           
-feeds_file:
+      feeds_file:
         type: choice
         description: '替换软件源配置(feeds.conf.default)'
         options:
