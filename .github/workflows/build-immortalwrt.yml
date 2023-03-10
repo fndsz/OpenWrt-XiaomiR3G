@@ -19,6 +19,7 @@ on:
           - "openwrt-18.06-dev"
           - "openwrt-18.06-k5.4"
           - "openwrt-21.02
+ 
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: MIR3G.config
   DIY_P1_SH: diy-part1.sh
