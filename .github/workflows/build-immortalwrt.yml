@@ -1,16 +1,6 @@
 ####################################
-#  update for 2022/02/08 00:14:52  #
+#  update for 2023/03/10 00:17:44  #
 ####################################
-#
-# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
-#
-# This is free software, licensed under the MIT License.
-# See /LICENSE for more information.
-#
-# https://github.com/P3TERX/Actions-OpenWrt
-# Description: Build OpenWrt using GitHub Actions
-#
-
 name: MIR3G
 on:
   repository_dispatch:
