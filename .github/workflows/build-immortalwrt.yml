@@ -21,13 +21,14 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH:
-type: choice
-   ptions:
-          - "master"
-          - "openwrt-18.06"
-          - "openwrt-18.06-dev"
-          - "openwrt-18.06-k5.4"
-          - "openwrt-21.02"
+         type: choice
+  description: '版本分支'
+  options:
+  - "master"
+  - "openwrt-18.06"
+  - "openwrt-18.06-dev"
+  - "openwrt-18.06-k5.4"
+  - "openwrt-21.02"
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: r3g.config
   DIY_P1_SH: diy-part1.sh
