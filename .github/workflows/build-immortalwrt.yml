@@ -17,9 +17,8 @@ on:
         type: choice
         description: '路由器资源目录'
         options:
-          - "Newifi-D1"
-          - "XIAOMI-R3G"
-      repo_branch:
+        - "XIAOMI-R3G"
+  repo_branch:
         type: choice
         description: '版本分支'
         options:
@@ -28,7 +27,7 @@ on:
           - "openwrt-18.06-dev"
           - "openwrt-18.06-k5.4"
           - "openwrt-21.02"
-      feeds_file:
+feeds_file:
         type: choice
         description: '替换软件源配置(feeds.conf.default)'
         options:
