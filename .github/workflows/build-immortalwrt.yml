@@ -22,7 +22,12 @@ on:
           - "openwrt-18.06-dev"
           - "openwrt-18.06-k5.4"
           - "openwrt-21.02"
-      feeds_file:
+          - "v21.02.4"
+          - "v21.02.3"
+          - "v21.02.2"
+          - "v21.02.1"
+          
+feeds_file:
         type: choice
         description: '替换软件源配置(feeds.conf.default)'
         options:
