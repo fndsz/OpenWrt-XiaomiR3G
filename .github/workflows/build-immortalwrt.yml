@@ -4,7 +4,6 @@
 ####################################
 name: 编译mir3g_immortalwrt固件
 on:
-on: 
   repository_dispatch:
   workflow_dispatch:
     inputs:
@@ -68,7 +67,7 @@ on:
         - "true"
 
 env:
-TIMEZONE: Asia/Shanghai
+  TIMEZONE: Asia/Shanghai
   
   UPLOAD_ACTIONSRUNS: true
   
