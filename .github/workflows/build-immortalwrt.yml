@@ -2,7 +2,7 @@
 ####################################
 #  update for Fndsz  #  immortalwrt
 ####################################
-name: 编译固件mir3g_immortalwrt
+name: 编译mir3g_immortalwrt固件
 
 on: 
   repository_dispatch:
