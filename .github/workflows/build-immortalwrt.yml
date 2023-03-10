@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build MiR3G
+name: 编译固件MIR3G_immortalwrt
 on:
   repository_dispatch:
   workflow_dispatch:
