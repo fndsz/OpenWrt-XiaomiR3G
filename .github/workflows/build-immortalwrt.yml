@@ -30,7 +30,7 @@ on:
         - "false"
       config_file:
         description: 'config 文件名称(.config)'
-        default: '.config'
+        default: 'r3g.config'
       files_path:
         type: choice
         description: '导入补丁目录(files目录)'
@@ -59,8 +59,8 @@ on:
         type: choice
         description: '发布到release'
         options:
-        - "false"
         - "true"
+        - "false"
 env:
   TIMEZONE: Asia/Shanghai
   
