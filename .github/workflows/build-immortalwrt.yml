@@ -19,21 +19,8 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/immortalwrt/immortalwrt
-  
-  repo_branch:
-        type: choice
-        description: '版本分支'
-        options:
-          - "master"
-          - "openwrt-18.06"
-          - "openwrt-18.06-dev"
-          - "openwrt-18.06-k5.4"
-          - "openwrt-21.02"
-          - "v21.02.4"
-          - "v21.02.3"
-          - "v21.02.2"
-          - "v21.02.1"
+  REPO_URL:  https://github.com/immortalwrt/immortalwrt
+  REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: r3g.config
   DIY_P1_SH: diy-part1.sh
@@ -47,7 +34,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
 
     steps:
     - name: Checkout
@@ -200,4 +187,3 @@ jobs:
         delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
