@@ -18,3 +18,6 @@ sed -i 's/OpenWrt/Mi-R3G/g' package/base-files/files/bin/config_generate
 
 ###### Modify wifi 
 sed -i "s/OpenWrt/$wifi_name/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+####### Set argon as default theme
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
