@@ -15,3 +15,6 @@ sed -i 's/192.168.1.1/10.28.1.1/g' package/base-files/files/bin/config_generate
 
 ###### Modify hostname
 sed -i 's/OpenWrt/Mi-R3G/g' package/base-files/files/bin/config_generate
+
+###### Modify wifi 
+sed -i "s/OpenWrt/$wifi_name/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
