@@ -1,0 +1,14 @@
+src-git packages https://github.com/Lienol/openwrt-packages.git;21.02
+src-git luci https://github.com/Lienol/openwrt-luci.git;21.02
+src-git routing https://git.openwrt.org/feed/routing.git;openwrt-21.02
+src-git telephony https://git.openwrt.org/feed/telephony.git;openwrt-21.02
+#src-link custom /usr/src/openwrt/custom-feed
+src-git lienol https://github.com/Lienol/openwrt-package.git;main
+src-git other https://github.com/Lienol/openwrt-package.git;other
+#src-link custom /usr/src/openwrt/custom-feed
+#src-git helloworld https://github.com/fw876/helloworld
+# src-git openclash https://github.com/vernesong/OpenClash.git;master
+# 包含openclash , SSR+ 和 passwall等
+src-git kenzo https://github.com/kenzok8/openwrt-packages
+# passwall依赖
+src-git small https://github.com/kenzok8/small
