@@ -9,6 +9,6 @@ src-git other https://github.com/Lienol/openwrt-package.git;other
 #src-git helloworld https://github.com/fw876/helloworld
 # src-git openclash https://github.com/vernesong/OpenClash.git;master
 # 包含openclash , SSR+ 和 passwall等
-src-git kenzo https://github.com/kenzok8/openwrt-packages
+#src-git kenzo https://github.com/kenzok8/openwrt-packages
 # passwall依赖
-src-git small https://github.com/kenzok8/small
+#src-git small https://github.com/kenzok8/small
