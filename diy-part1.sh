@@ -22,8 +22,6 @@ sed -i '$a src-git small8 https://github.com/kenzok8/small-package' feeds.conf.d
 #sed -i '$a src-git Aibx https://github.com/Aibx/openwrt-packages' feeds.conf.default
 #sed -i '$a src-git immortalwrt https://github.com/immortalwrt/packages' feeds.conf.default
 
-echo 'src-git luci-app-tailscale 'https://www.://github.com/selfcan/luci-app-tailscale.git' >> 'feeds.conf.default'
-
 ####### Replace with JerryKuKu’s Argon
 #rm openwrt/package/lean/luci-theme-argon -rf #delete original argon theme
 rm -rf ./feeds/luci/themes/luci-theme-argon
@@ -32,6 +30,7 @@ echo 'src-git ArgonThemeConfig https://github.com/jerrykuku/luci-app-argon-confi
 #rm -rf package/lean/luci-theme-argon  #删除原Argon主题
 #git clone -b master https://github.com/jerrykuku/luci-theme-argon package/lean/luci-theme-argon #加入JerryKuKu’s Argon
 #git clone -b master https://github.com/jerrykuku/luci-app-argon-config package/lean/luci-app-argon-config #加入JerryKuKu’s Argon Config
+echo 'src-git luci-app-tailscale 'https://www.://github.com/selfcan/luci-app-tailscale.git' >> 'feeds.conf.default' #repleace with selfcan luci-app-tailscale
 #cd ..
 #cd ..
  
