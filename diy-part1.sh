@@ -25,6 +25,7 @@ sed -i '$a src-git lienol https://github.com/Lienol/openwrt-packages' feeds.conf
 rm -rf openwrt/package/lean/luci-theme-argon #delete original argon theme
 rm -rf ./feeds/luci/themes/luci-theme-argon
 rm -rf package/lean/luci-theme-argon  #删除原Argon主题
+git clone https://github.com/siwind/luci-app-wolplus.git package/lean/luci-app-wolplus
 cd ..
 #cd ..
  
