@@ -22,7 +22,7 @@ sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 #sed -i '$a src-git immortalwrt https://github.com/immortalwrt/packages' feeds.conf.default
  sed -i '$a src-git mmdvm https://github.com/qzyuebing/mmdvm-openwrt' feeds.conf.default
  sed -i '$a src-git YSFClients https://github.com/qzyuebing/YSFClients.git' feeds.conf.default
- sed -i '$a src-git YSF2DMR https://github.com/ea5gvkg/YSF2DMR.git' feeds.conf.default
+ sed -i '$a src-git YSF2DMR https://github.com/ea5gvk/YSF2DMR.git' feeds.conf.default
 
 ####### Replace with JerryKuKu’s Argon
 rm -rf openwrt/package/lean/luci-theme-argon #delete original argon theme
