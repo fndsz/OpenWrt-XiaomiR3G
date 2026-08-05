@@ -13,6 +13,7 @@ name: Build mir3g
 permissions:
   actions: write     
   contents: read      
+
 on:
   repository_dispatch:
   workflow_dispatch:
