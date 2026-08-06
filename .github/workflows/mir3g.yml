@@ -9,7 +9,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: MT7620
+name: r3g
 
 permissions:
   actions: write     
