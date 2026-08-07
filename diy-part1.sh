@@ -13,9 +13,6 @@
 # Uncomment a feed source
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
-#sed -i '$a src-git lienol https://github.com/Lienol/openwrt-packages' feeds.conf.default
-#sed -i '$a src-git Aibx https://github.com/Aibx/openwrt-packages' feeds.conf.default
-
 # Add a feed source
 git clone https://github.com/fndsz/mmdvm-op package/mmdvm/mmdvm-openwrt
 git clone https://github.com/siwind/luci-app-wolplus package/wolplus
