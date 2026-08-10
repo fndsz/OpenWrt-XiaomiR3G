@@ -12,6 +12,7 @@
 
 # Uncomment a feed source
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+sed -i '$a src-git immortalwrt https://github.com/immortalwrt/packages' feeds.conf.default
 
 # Add a feed source
 git clone https://github.com/fndsz/mmdvm-op package/mmdvm/mmdvm-openwrt
