@@ -72,6 +72,7 @@ jobs:
       run: cd openwrt && ./scripts/feeds update -a
 
     - name: Install feeds
+        chmod 755 package/feeds/packages/ttyd/files/etc/init.d/ttyd
       run: cd openwrt && ./scripts/feeds install -a
 
     - name: Load custom configuration
@@ -93,7 +94,6 @@ jobs:
       id: package
       run: |
         cd openwrt
-        chmod 755 package/freeds/packages/ttyd/files/etc/init.d/ttyd
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
