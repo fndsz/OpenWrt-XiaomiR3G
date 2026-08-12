@@ -1,26 +1,26 @@
 #
-# Copyright (c) 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com># 版权所有 © 2019-2020 P3TERX <https://p3terx.com>
+# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
 #
-# This is free software, licensed under the MIT License.# 本软件为自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。# 这是自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。# 这是自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。# 这是自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。# 这是自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。# 这是自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。# 这是自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。# 这是自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。# 本软件为自由软件，采用 MIT 许可证。
-# See /LICENSE for more information.# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 更多信息请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。# 有关更多信息，请参阅 /LICENSE。请阅读 /LICENSE。
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
 #
 # https://github.com/P3TERX/Actions-OpenWrt
-# Description: Build OpenWrt using GitHub Actions# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt# 描述：使用 GitHub Actions 构建 OpenWrt
+# Description: Build OpenWrt using GitHub Actions
 #
 
-name:  MiR3G名称:  MiR3G
+name:  MiR3G
 
-on:开启:
+on:
   repository_dispatch:
   workflow_dispatch:
     inputs:
       ssh:
-        description: 'SSH connection to Actions'到 Actions 的 SSH 连接描述: '到 Actions 的 SSH 连接'
+        description: 'SSH connection to Actions'
         required: false
-        default: 'false'默认: 'false'
+        default: 'false'
 
-env:环境变量:
-  REPO_URL: https://github.com/immortalwrt/immortalwrt
+env:
+  REPO_URL: https://github.com/fndsz/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: r3g.config
@@ -35,7 +35,7 @@ env:环境变量:
 
 jobs:
   build:
-    runs-on: ubuntu-last
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout
@@ -76,14 +76,11 @@ jobs:
 
     - name: Load custom configuration
       run: |
-          [ -e files ] && mv files openwrt/files
-          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-          chmod +x $DIY_P2_SH
-          cd openwrt
-          # ===== 强制 init.d 脚本 0755 =====
-          find files/etc/init.d -type f -exec chmod 755 {} +
-          # ================================
-          $GITHUB_WORKSPACE/$DIY_P2_SH
+        [ -e files ] && mv files openwrt/files
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        chmod +x $DIY_P2_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P2_SH
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
@@ -120,7 +117,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
-         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
 
     - name: Organize files
