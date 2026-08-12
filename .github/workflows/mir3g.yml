@@ -73,8 +73,7 @@ jobs:
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
-       chmod 755 package/feeds/packages/ttyd/files/etc/init.d/ttyd 2>/dev/null || true
-
+       
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
