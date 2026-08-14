@@ -13,9 +13,9 @@
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 #sed -i '$a src-git immortalwrt https://github.com/immortalwrt/packages' feeds.conf.default
-sed -i '$a src-git mmdvm https://github.com/fndsz/mmdvm-openwrt' feeds.conf.default
+#sed -i '$a src-git mmdvm https://github.com/fndsz/mmdvm-openwrt' feeds.conf.default
 
 # Add a feed source
-#git clone https://github.com/fndsz/mmdvm-op package/mmdvm/mmdvm-openwrt
+git clone https://github.com/fndsz/mmdvm-op package/mmdvm
 git clone https://github.com/siwind/luci-app-wolplus package/wolplus
-#git clone https://github.com/fndsz/mmdvmpatch.git package/mmdvm/mmdvm-openwrt
+git clone https://github.com/fndsz/mmdvmpatch.git package/mmdvm
