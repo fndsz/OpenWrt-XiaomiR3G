@@ -17,3 +17,4 @@
 # Add a feed source
 git clone https://github.com/fndsz/mmdvm-op package/mmdvm/mmdvm-openwrt
 git clone https://github.com/siwind/luci-app-wolplus package/wolplus
+git clone https://github.com/fndsz/mmdvmpatch.git package/mmdvm/mmdvm-openwrt
