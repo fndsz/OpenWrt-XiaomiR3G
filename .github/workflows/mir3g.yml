@@ -71,7 +71,7 @@ jobs:
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
            cd feed/mmdvm
-           gut apply mmdvm.patch
+           git apply mmdvm.patch
            
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
@@ -81,7 +81,7 @@ jobs:
           [ -e files ] && mv files openwrt/files
           [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
           chmod +x $DIY_P2_SH
-          cd openwrt
+          cd oenwrt
           # ===== 强制 init.d 脚本 0755 =====
           find files/etc/init.d -type f -exec chmod 755 {} +
           # ================================
