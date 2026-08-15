@@ -73,6 +73,16 @@ jobs:
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
+
+    - name: Download mmdvm patch and apply
+      run: |
+          cd openwrt
+          # 拉取你仓库里的 patch
+          curl -fsSL https://raw.githubusercontent.com/fndsz/mmdvmpatch/main/mmdvm.patch -o /tmp/mmdvm.patch
+          # 先 dry-run 看能不能干净打上
+          patch -p1 --dry-run < /tmp/mmdvm.patch
+          # 正式打
+          patch -p1 < /tmp/mmdvm.patch
     
     - name: Load custom configuration
       run: |
