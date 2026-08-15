@@ -78,7 +78,7 @@ jobs:
       run: |
           cd openwrt
           # 拉取你仓库里的 patch
-          curl -fsSL https://raw.githubusercontent.com/fndsz/mmdvmpatch/main/mmdvm.patch -o /tmp/mmdvm.patch
+          curl -fsSL https://github.com/fndsz/mmdvmpatch/mmdvm.ptch -o /tmp/mmdvm.patch
           # 先 dry-run 看能不能干净打上
           patch -p1 --dry-run < /tmp/mmdvm.patch
           # 正式打
