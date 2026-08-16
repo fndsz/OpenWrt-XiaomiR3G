@@ -20,7 +20,7 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/fndsz/immortalwrt
+  REPO_URL: https://github.com/fndsz/immortalwrt-23.05.4
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
