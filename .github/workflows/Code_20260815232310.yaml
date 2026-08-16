@@ -34,7 +34,7 @@ env:
   TZ: Asia/Shanghai
   # ===== 新增：mmdvm 补丁源 =====
   MMDVM_PATCH_URL: https://raw.githubusercontent.com/fndsz/mmdvmpatch/main/mmdvm.patch
-  MMDVM_FEED_URL: https://github.com/lazywalker/mmdvm-openwrt.git
+  MMDVM_FEED_URL: https://github.com/fndsz/mmdvm-op.git
 
 jobs:
   build:
