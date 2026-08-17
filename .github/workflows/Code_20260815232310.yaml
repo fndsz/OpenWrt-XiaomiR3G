@@ -1,4 +1,3 @@
-#
 # Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
 #
 # This is free software, licensed under the MIT License.
@@ -8,7 +7,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name:  MiR3G mmdvm
+name: MiR3G mmdvm
 
 on:
   repository_dispatch:
@@ -32,7 +31,7 @@ env:
   UPLOAD_WETRANSFER: false
   UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
-  # ===== 新增：mmdvm 补丁源 =====
+  # ===== mmdvm 补丁源 =====
   MMDVM_PATCH_URL: https://raw.githubusercontent.com/fndsz/mmdvmpatch/main/mmdvm.patch
   MMDVM_FEED_URL: https://github.com/fndsz/mmdvm-op.git
 
@@ -50,7 +49,13 @@ jobs:
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
-        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
+        # OpenWrt 官方依赖清单（兼容 ubuntu-22.04）
+        sudo -E apt-get -qq install -y \
+          build-essential ccache ecj fastjar file g++ gawk \
+          gettext git java-propose-classpath libelf-dev libncurses5-dev \
+          libncursesw5-dev libssl-dev python3 python3-distutils python3-setuptools \
+          rsync subversion swig unzip wget xz-utils zlib1g-dev \
+          patch diffutils
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
@@ -70,8 +75,8 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-        
-        # ===== 新增：添加 mmdvm feed =====
+
+        # ===== 添加 mmdvm feed =====
         echo "src-git mmdvm $MMDVM_FEED_URL" >> feeds.conf.default
         echo "Added mmdvm feed: $MMDVM_FEED_URL"
 
@@ -81,44 +86,26 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-    # ===== 新增：应用 mmdvm 补丁 =====
+    # ===== 下载并应用 mmdvm 补丁 =====
     - name: Apply mmdvm patch from fndsz/mmdvmpatch
       run: |
         cd openwrt
-        
-        # 下载补丁文件
-        echo "Downloading mmdvm.patch from fndsz/mmdvmpatch..."
-        curl -fsSL $MMDVM_PATCH_URL -o /tmp/mmdvm.patch
-        
+
+        # 下载补丁文件（修复：指定完整文件名）
+        echo "Downloading mmdvm patch from fndsz/mmdvmpatch..."
+        curl -fsSL "$MMDVM_PATCH_URL" -o /tmp/mmdvm.patch
+
+        # 验证下载成功
+        if [ ! -s /tmp/mmdvm.patch ]; then
+          echo "::error::Failed to download mmdvm patch or file is empty!"
+          exit 1
+        fi
+
         # 显示补丁预览
         echo "=== Patch file preview (first 20 lines) ==="
         head -20 /tmp/mmdvm.patch
         echo "..."
-        
-        # 查找 mmdvm 包目录
-        MMDPKG=$(find package feeds -type d -name mmdvm | head -n1)
-        echo "Found mmdvm package at: $MMDPKG"
-        
-        if [ -z "$MMDPKG" ]; then
-          echo "::warning::mmdvm package not found, searching broadly..."
-          MMDPKG=$(find . -type d -path '*/mmdvm' | head -n1)
-          echo "Broad search result: $MMDPKG"
-        fi
-        
-        if [ -z "$MMDPKG" ]; then
-          echo "::error::Cannot find mmdvm package directory!"
-          echo "Listing all directories containing 'mmdvm':"
-          find . -type d -name '*mmdvm*' 2>/dev/null || echo "(none found)"
-          exit 1
-        fi
-        
-        # 创建 patches 目录并放入补丁
-        mkdir -p "$MMDPKG/patches"
-        cp /tmp/mmdvm.patch "$MMDPKG/patches/999-mmdvm-custom.patch"
-        
-        echo "=== Patches directory content ==="
-        ls -la "$MMDPKG/patches/"
-        
+
         # 验证补丁格式
         echo "=== Validating patch format ==="
         if head -1 /tmp/mmdvm.patch | grep -q "^--- "; then
@@ -126,37 +113,76 @@ jobs:
         else
           echo "⚠️ Patch format might be different, proceeding anyway"
         fi
-        
-        echo "✅ mmdvm patch has been placed successfully"
+
+        # 查找 mmdvm 包目录（更精准的匹配）
+        MMDPKG=$(find package feeds -type d -name mmdvm | grep -E 'feeds/mmdvm/mmdvm$' | head -n1)
+        echo "Found mmdvm package at: $MMDPKG"
+
+        if [ -z "$MMDPKG" ]; then
+          echo "::warning::Precise match failed, trying broad search..."
+          MMDPKG=$(find . -type d -path '*/mmdvm' | head -n1)
+          echo "Broad search result: $MMDPKG"
+        fi
+
+        if [ -z "$MMDPKG" ]; then
+          echo "::error::Cannot find mmdvm package directory!"
+          echo "Listing all directories containing 'mmdvm':"
+          find . -type d -name '*mmdvm*' 2>/dev/null || echo "(none found)"
+          exit 1
+        fi
+
+        # 直接应用补丁（而非仅放入 patches/ 目录）
+        echo "=== Applying patch to $MMDPKG ==="
+        cd "$MMDPKG"
+
+        if patch -p1 --dry-run < /tmp/mmdvm.patch >/dev/null 2>&1; then
+          patch -p1 < /tmp/mmdvm.patch
+          echo "✅ mmdvm patch applied successfully"
+        else
+          echo "::error::Patch does not apply cleanly to $MMDPKG"
+          echo "=== Attempting dry-run to show conflicts ==="
+          patch -p1 --dry-run < /tmp/mmdvm.patch
+          exit 1
+        fi
+
+        # 返回 openwrt 根目录
+        cd /workdir/openwrt
 
     - name: Load custom configuration
       run: |
-          [ -e files ] && mv files openwrt/files
-          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-          chmod +x $DIY_P2_SH
-          cd openwrt
-          # ===== 强制 init.d 脚本 0755 =====
+        [ -e files ] && mv files openwrt/files
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        chmod +x $DIY_P2_SH
+        cd openwrt
+
+        # ===== 强制 init.d 脚本 0755 =====
+        if [ -d files/etc/init.d ]; then
           find files/etc/init.d -type f -exec chmod 755 {} +
-          # ================================
-          
-          # ===== 新增：确保 mmdvm 被编译 =====
-          echo "CONFIG_PACKAGE_mmdvm=y" >> .config
-          echo "CONFIG_PACKAGE_luci-app-mmdvm=y" >> .config
-          # ====================================
-          
-          $GITHUB_WORKSPACE/$DIY_P2_SH
+        fi
+        # ================================
+
+        # ===== 确保 mmdvm 被编译 =====
+        echo "CONFIG_PACKAGE_mmdvm=y" >> .config
+        echo "CONFIG_PACKAGE_luci-app-mmdvm=y" >> .config
+        # ====================================
+
+        $GITHUB_WORKSPACE/$DIY_P2_SH
+
+        # ===== 在追加配置后重新生成完整 .config =====
+        make defconfig
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
 
     - name: Download package
       id: package
       run: |
         cd openwrt
+        # 再次确保 .config 是最新的（包含 mmdvm 配置）
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
@@ -168,7 +194,7 @@ jobs:
         cd openwrt
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
-        echo "::set-output name=status::success"
+        echo "status=success" >> $GITHUB_OUTPUT
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
@@ -191,7 +217,7 @@ jobs:
         cd openwrt/bin/targets/*/*
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
-        echo "::set-output name=status::success"
+        echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
@@ -207,7 +233,7 @@ jobs:
         curl -fsSL git.io/file-transfer | sh
         ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
-        echo "::set-output name=url::$(cat cowtransfer.log | grep https | cut -f3 -d" ")"
+        echo "url=$(cat cowtransfer.log | grep https | cut -f3 -d' ')" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to WeTransfer
       id: wetransfer
@@ -216,17 +242,17 @@ jobs:
         curl -fsSL git.io/file-transfer | sh
         ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
-        echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
+        echo "url=$(cat wetransfer.log | grep https | cut -f3 -d' ')" >> $GITHUB_OUTPUT
 
     - name: Generate release tag
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
+        echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
-        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
-        echo "::set-output name=status::success"
+        [ "$UPLOAD_COWTRANSFER" = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
+        [ "$UPLOAD_WETRANSFER" = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
+        echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to release
       uses: softprops/action-gh-release@v1
